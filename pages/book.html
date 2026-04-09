@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoyfulNest Cleaning | Book a Cleaning</title>
+    <meta name="description" content="Book a JoyfulNest Cleaning visit through a page prepared for Calendly or other scheduling tools." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <script src="../assets/js/main.js" defer></script>
+  </head>
+  <body data-page="book" data-prefix="../">
+    <!-- Shared header -->
+    <div data-include="components/header.html"></div>
+
+    <main>
+<!-- Page hero -->
+<section class="page-hero" style="--hero-image: url('https://source.unsplash.com/featured/1600x900/?welcoming,clean,home');">
+  <div class="container hero-wrap">
+    <div class="hero-content">
+      <span class="eyebrow">Book Your Cleaning</span>
+      <h1>Reserve your next cleaning visit with a layout built for a real booking workflow.</h1>
+      <p>The booking page is intentionally structured for easy Calendly or scheduling-tool integration, so the client can go live quickly with minimal rebuild work.</p>
+      <div class="button-row"><a class="button button-outline" href="contact.html">Need Help First?</a></div>
+    </div>
+
+  </div>
+</section>
+
+      <!-- Booking embed placeholder -->
+      <section class="section">
+        <div class="container">
+          <div class="section-heading centered">
+            <span class="eyebrow">Book Your Cleaning</span>
+            <h2>Book your cleaning in minutes</h2>
+            <p>Pick a time that works for you. Fast, simple, and hassle-free scheduling.</p>
+          </div>
+
+          <div class="calendly-glass-container">
+            <!-- Calendly inline widget begin -->
+            <div class="calendly-inline-widget" data-url="https://calendly.com/ali_masrafi/30-minute-quick-meeting?hide_event_type_details=1&hide_gdpr_banner=1" style="min-width:320px;height:700px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <!-- Calendly inline widget end -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Booking support -->
+      <section class="section-soft">
+        <div class="container process-grid">
+          <article class="process-card process-card-premium"><div class="process-card-icon">📋</div><h3>Choose the service</h3><p>Browse our cleaning options and choose the service that best fits your home or workspace.</p></article>
+          <article class="process-card process-card-premium"><div class="process-card-icon">📝</div><h3>Add notes</h3><p>Share any special requests, timing preferences, or details so we can tailor the service to your needs.</p></article>
+          <article class="process-card process-card-premium"><div class="process-card-icon">✓</div><h3>Confirm the visit</h3><p>Pick your preferred time and confirm your booking — we'll handle the rest with care and professionalism.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Shared footer -->
+    <div data-include="components/footer.html"></div>
+  </body>
+</html>
