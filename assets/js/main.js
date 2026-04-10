@@ -71,12 +71,12 @@ const inlineComponents = {
           <div class="footer-section footer-section-links">
             <h3 class="footer-section-title">Quick Links</h3>
             <ul class="footer-links-list">
-              <li><a href="index.html" class="footer-link">Home</a></li>
-              <li><a href="pages/services.html" class="footer-link">Services</a></li>
-              <li><a href="pages/about.html" class="footer-link">About</a></li>
-              <li><a href="pages/pricing.html" class="footer-link">Pricing</a></li>
-              <li><a href="pages/contact.html" class="footer-link">Contact</a></li>
-              <li><a href="pages/book.html" class="footer-link">Book Now</a></li>
+              <li><a href="index.html" class="footer-link shared-link">Home</a></li>
+              <li><a href="pages/services.html" class="footer-link shared-link">Services</a></li>
+              <li><a href="pages/about.html" class="footer-link shared-link">About</a></li>
+              <li><a href="pages/pricing.html" class="footer-link shared-link">Pricing</a></li>
+              <li><a href="pages/contact.html" class="footer-link shared-link">Contact</a></li>
+              <li><a href="pages/book.html" class="footer-link shared-link">Book Now</a></li>
             </ul>
           </div>
 
@@ -84,11 +84,11 @@ const inlineComponents = {
           <div class="footer-section footer-section-services">
             <h3 class="footer-section-title">Popular Services</h3>
             <ul class="footer-links-list">
-              <li><a href="pages/standard-house-cleaning.html" class="footer-link">Standard House Cleaning</a></li>
-              <li><a href="pages/deep-cleaning.html" class="footer-link">Deep Cleaning</a></li>
-              <li><a href="pages/move-in-move-out-cleaning.html" class="footer-link">Move-In / Move-Out</a></li>
-              <li><a href="pages/carpet-cleaning.html" class="footer-link">Carpet Cleaning</a></li>
-              <li><a href="pages/office-cleaning.html" class="footer-link">Office Cleaning</a></li>
+              <li><a href="pages/standard-house-cleaning.html" class="footer-link shared-link">Standard House Cleaning</a></li>
+              <li><a href="pages/deep-cleaning.html" class="footer-link shared-link">Deep Cleaning</a></li>
+              <li><a href="pages/move-in-move-out-cleaning.html" class="footer-link shared-link">Move-In / Move-Out</a></li>
+              <li><a href="pages/carpet-cleaning.html" class="footer-link shared-link">Carpet Cleaning</a></li>
+              <li><a href="pages/office-cleaning.html" class="footer-link shared-link">Office Cleaning</a></li>
             </ul>
           </div>
         </div>
@@ -113,8 +113,6 @@ async function includeComponents(prefix) {
   const includeTargets = Array.from(document.querySelectorAll("[data-include]"));
   const componentVersion = "20260410-footer-rebuild";
 
-  console.log(`[Component Loader] Found ${includeTargets.length} components to load`);
-
   await Promise.all(
     includeTargets.map(async (target) => {
       const includePath = target.dataset.include;
@@ -123,8 +121,6 @@ async function includeComponents(prefix) {
       const existingMarkup = target.innerHTML.trim();
       let markup = existingMarkup || inlineComponents[includePath] || "";
 
-      console.log(`[Component Loader] Processing ${includePath}, existing markup: ${existingMarkup.length > 0}, inline available: ${!!inlineComponents[includePath]}`);
-
       if (markup) {
         target.innerHTML = markup;
         target.hidden = false;
@@ -132,9 +128,6 @@ async function includeComponents(prefix) {
         target.style.opacity = '1';
         target.style.visibility = 'visible';
         target.dataset.includeStatus = "inline";
-        console.log(`[Component Loader] Injected inline content for ${includePath}`);
-      } else {
-        console.warn(`[Component Loader] No markup available for ${includePath}`);
       }
 
       try {
@@ -152,14 +145,9 @@ async function includeComponents(prefix) {
           target.style.opacity = '1';
           target.style.visibility = 'visible';
           target.dataset.includeStatus = "loaded";
-          console.log(`[Component Loader] Successfully loaded and injected ${includePath} from ${requestPath}`);
-        } else {
-          console.warn(`[Component Loader] Loaded empty content for ${includePath}`);
         }
       } catch (error) {
-        console.warn(`[Component Loader] Using inline fallback for ${includePath}`, error);
         target.dataset.includeStatus = "fallback";
-        // Ensure fallback content is visible
         target.hidden = false;
         target.style.display = 'block';
         target.style.opacity = '1';
@@ -167,8 +155,6 @@ async function includeComponents(prefix) {
       }
     }),
   );
-
-  console.log(`[Component Loader] Component loading complete`);
 }
 
 // Normalizes shared component links so root and nested pages both work consistently.
